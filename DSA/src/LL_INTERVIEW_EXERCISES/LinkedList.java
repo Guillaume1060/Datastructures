@@ -4,6 +4,7 @@ public class LinkedList {
 
     private Node head;
     private Node tail;
+    private int length;
 
     class Node {
         int value;
@@ -18,6 +19,7 @@ public class LinkedList {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
+        length = 1;
     }
 
     public Node getHead() {
@@ -26,6 +28,10 @@ public class LinkedList {
 
     public Node getTail() {
         return tail;
+    }
+
+    public int getLength() {
+        return length;
     }
 
     public void printList() {
@@ -55,6 +61,7 @@ public class LinkedList {
     public void makeEmpty() {
         head = null;
         tail = null;
+        length = 0;
     }
 
     public void append(int value) {
@@ -66,18 +73,32 @@ public class LinkedList {
             tail.next = newNode;
             tail = newNode;
         }
+        length++;
     }
 
-    // WRITE FIND MIDDLE NODE METHOD HERE //
+    //EXO12 WRITE FIND MIDDLE NODE METHOD HERE //
     public Node findMiddleNode() {
         Node slow = head;
         Node fast = head;
-        while (fast!=null && fast.next != null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
         return slow;
     }
 
+    //EXO13 WRITE HASLOOP METHOD HERE
+    public boolean hasLoop() {
+        Node slow = head;
+        Node fast = head;
+        while (fast !=null && fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
