@@ -16,7 +16,7 @@ public class Main {
         System.out.println( "Middle Node: "+ myLinkedList.findMiddleNode().value);*/
 
         // EXO 13
-        LinkedList myLinkedList = new LinkedList(1);
+        /*LinkedList myLinkedList = new LinkedList(1);
         myLinkedList.append(2);
         myLinkedList.append(3);
         myLinkedList.append(4);
@@ -24,12 +24,31 @@ public class Main {
         // create a loop by connecting the tail to the second node
         myLinkedList.getTail().next = myLinkedList.getHead().next;
         System.out.println("Has Loop:");
-        System.out.println( myLinkedList.hasLoop());
+        System.out.println( myLinkedList.hasLoop());*/
         /*
             EXPECTED OUTPUT:
             ----------------
             Has Loop:
             true
+        */
+
+        // EXO 14
+        LinkedList myLinkedList = new LinkedList(1);
+        myLinkedList.append(2);
+        myLinkedList.append(3);
+        myLinkedList.append(4);
+        myLinkedList.append(5);
+
+        int k = 2;
+        int result = myLinkedList.findKthFromEnd(k).value;
+
+        System.out.println(result); // Output: 4
+
+        /*
+            EXPECTED OUTPUT:
+            ----------------
+            4
+
         */
     }
 }

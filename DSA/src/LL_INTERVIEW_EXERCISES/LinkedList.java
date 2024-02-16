@@ -91,7 +91,7 @@ public class LinkedList {
     public boolean hasLoop() {
         Node slow = head;
         Node fast = head;
-        while (fast !=null && fast.next!=null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
@@ -99,6 +99,44 @@ public class LinkedList {
             }
         }
         return false;
+    }
+
+    //EXO14 - Find Kth Node From End (WITHOUT USING LENGTH)
+    // It works but nop optimal (best solution below)
+/*    public Node findKthFromEnd(int k) {
+        Node temp = head;
+        Node temp2 = head;
+        int length = 1;
+        while (temp!=null && temp.next!=null) {
+            length++;
+            temp = temp.next;
+        }
+        if (k>length) return null;
+        int position = length-k;
+        for (int i=1;i<=position;i++) {
+            assert temp2 != null;
+            temp2 = temp2.next;
+        }
+        return temp2;
+    }*/
+    //EXO14 - Better way
+    public Node findKthFromEnd(int k) {
+        Node slow = head;
+        Node fast = head;
+
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
+        }
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
     }
 }
 
