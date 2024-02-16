@@ -12,14 +12,12 @@ public class LinkedList {
             this.value = value;
         }
     }
-
     public LinkedList(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
         length = 1;
     }
-
     public void printList() {
         Node temp = head;
         while (temp != null) {
@@ -27,7 +25,6 @@ public class LinkedList {
             temp = temp.next;
         }
     }
-
     public void getHead() {
         if (head == null) {
             System.out.println("Head: null");
@@ -35,7 +32,6 @@ public class LinkedList {
             System.out.println("Head: " + head.value);
         }
     }
-
     public void getTail() {
         if (head == null) {
             System.out.println("Tail: null");
@@ -43,11 +39,9 @@ public class LinkedList {
             System.out.println("Tail: " + tail.value);
         }
     }
-
     public void getLength() {
         System.out.println("Length: " + length);
     }
-
     public void append (int value) {
         Node newNode = new Node(value);
         if(length==0) {
@@ -59,7 +53,6 @@ public class LinkedList {
         }
         length++;
     }
-
     public Node removeLast() {
         if (length == 0) return null;
         Node temp = head;
@@ -77,7 +70,6 @@ public class LinkedList {
         }
         return temp;
     }
-
     public void prepend(int value) {
         Node newNode = new Node(value);
         if (length==0) {
@@ -88,7 +80,6 @@ public class LinkedList {
         head = newNode;
         length++;
     }
-
     public Node removeFirst() {
         if (length == 0) return null;
         Node temp = head;
@@ -100,7 +91,6 @@ public class LinkedList {
         }
         return temp;
     }
-
     public Node get (int index) {
         if (index<0 || index>=length) return null;
         Node temp = head;
@@ -109,14 +99,12 @@ public class LinkedList {
         }
         return temp;
     }
-
     public boolean set(int index, int value) {
         Node temp = get(index);
         if (temp==null) return false;
         temp.value = value;
         return true;
     }
-
     public boolean insert(int index,int value) {
         if (index<0 || index>length) return false;
         if(index==0) {
@@ -134,7 +122,6 @@ public class LinkedList {
         length++;
         return true;
     }
-
     public Node remove (int index) {
         if (index<0 || index>=length) return null;
         if (index==0) return removeFirst();
@@ -146,7 +133,6 @@ public class LinkedList {
         length--;
         return temp;
     }
-
     public void reverse() {
         Node temp = head;
         head = tail;
