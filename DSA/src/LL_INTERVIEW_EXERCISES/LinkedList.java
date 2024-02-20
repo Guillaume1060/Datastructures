@@ -226,5 +226,42 @@ public class LinkedList {
             }
             return num;
         }
+
+        // EXO 18 Reverse Between
+        public void reverseBetween(int m, int n) {
+            // Your implementation here
+            Node temp = head;
+            Node reverseHead = null;
+            Node reverseTail = null;
+            Node normalHead = null;
+            Node normalTail = null;
+            int index = 0;
+            while (temp!=null) {
+                Node nextNode = temp.next;
+                if (index>=m && index<=n) {
+                    if (reverseHead==null) {
+                        reverseHead = temp;
+                        reverseTail = temp;
+                    } else {
+                        temp.next = reverseHead;
+                        reverseHead = temp;
+
+                    }
+                } else {
+                    if (normalHead==null) {
+                        normalHead = temp;
+                        normalTail = temp;
+                    } else {
+                        normalHead.next = temp;
+                        normalTail = temp;
+                    }
+                }
+                index++;
+                temp = nextNode;
+            }
+            // ReOrganise the list
+            // Dois-je ajuster head & tail à index m-1 ?
+            // --> temp. next deviendra le tail du reverse
+        }
 }
 
