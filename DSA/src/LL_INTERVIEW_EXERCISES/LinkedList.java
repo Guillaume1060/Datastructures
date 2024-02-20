@@ -1,5 +1,7 @@
 package LL_INTERVIEW_EXERCISES;
 
+import java.util.HashSet;
+
 public class LinkedList {
 
     private Node head;
@@ -139,6 +141,7 @@ public class LinkedList {
         return slow;
     }
 
+    // EXO 15
     public void partitionList(int x) {
         if (head == null) return;
         Node temp = head;
@@ -175,5 +178,42 @@ public class LinkedList {
             smallTail.next = bigHead;
         }
     }
+
+    // EXO 16 WITH HASHSET
+    public void removeDuplicates() {
+        // Your implementation goes here
+        HashSet<Integer> values = new HashSet<Integer>();
+        Node previous = null;
+        Node current = head;
+
+        while (current!=null) {
+            if (values.contains(current.value)) {
+                previous.next = current.next;
+                length--;
+            } else {
+                values.add(current.value);
+                previous = current;
+            }
+            current = current.next;
+        }
+    }
+
+    // EXO 16 WITHOUT HASHSET
+    public void removeDuplicatesBis() {
+        // Your implementation goes here
+        Node current = head;
+        while (current!=null) {
+            Node runner = current;
+            while (runner.next!=null) {
+                if (runner.value == runner.next.value) {
+                    runner.next = runner.next.next;
+                    length--;
+                } else {
+                    runner = runner.next;
+                }
+            }
+                current = current.next;
+            }
+        }
 }
 
