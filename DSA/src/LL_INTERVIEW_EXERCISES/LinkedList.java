@@ -215,5 +215,16 @@ public class LinkedList {
                 current = current.next;
             }
         }
+
+        // EXO 17 BinaryToDecimal
+        public int binaryToDecimal() {
+            int num = 0;
+            Node current = head;
+            while (current != null) {
+                num = num * 2 + current.value;
+                current = current.next;
+            }
+            return num;
+        }
 }
 
