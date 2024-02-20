@@ -33,7 +33,7 @@ public class Main {
         */
 
         // EXO 14
-        LinkedList myLinkedList = new LinkedList(1);
+        /*LinkedList myLinkedList = new LinkedList(1);
         myLinkedList.append(2);
         myLinkedList.append(3);
         myLinkedList.append(4);
@@ -42,7 +42,7 @@ public class Main {
         int k = 2;
         int result = myLinkedList.findKthFromEnd(k).value;
 
-        System.out.println(result); // Output: 4
+        System.out.println(result); // Output: 4*/
 
         /*
             EXPECTED OUTPUT:
@@ -50,5 +50,43 @@ public class Main {
             4
 
         */
+
+        // EXO 15
+        // Create a new LinkedList and append values to it
+        LinkedList ll = new LinkedList(3);
+        ll.append(5);
+        ll.append(8);
+        ll.append(10);
+        ll.append(2);
+        ll.append(1);
+
+        // Print the list before partitioning
+        System.out.println("LL before partitionList:");
+        ll.printList(); // Output: 3 5 8 10 2 1
+
+        // Call the partitionList method with x = 5
+        ll.partitionList(5);
+
+        // Print the list after partitioning
+        System.out.println("LL after partitionList:");
+        ll.printList(); // Output: 3 2 1 5 8 10
     }
 }
+        /*
+            EXPECTED OUTPUT:
+            ----------------
+            LL before partition_list:
+            3
+            5
+            8
+            10
+            2
+            1
+            LL after partition_list:
+            3
+            2
+            1
+            5
+            8
+            10
+         */
