@@ -86,4 +86,43 @@ public class DoublyLinkedList {
         head.value = tail.value;
         tail.value = temp;
     }
+
+    // EXO 29 - REVERSE - My way
+/*    public void reverse() {
+        if (length<2) return;
+        Node temp = head;
+        head = tail;
+        tail = temp;
+        Node after; // = temp.next;
+        Node before = null;
+        for (int i=0;i<length;i++) {
+            // init after
+            after = temp.next;
+
+            // reverse
+            Node tempNext = temp.next;
+            temp.next = before;
+            temp.prev = tempNext;
+
+            // update for next
+            before = temp;
+            temp = after;
+        }
+    }*/
+    // BETTER WAY
+    public void reverse() {
+        Node current = head;
+        Node temp = null;
+
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+        temp = head;
+        head = tail;
+        tail = temp;
+    }
 }
