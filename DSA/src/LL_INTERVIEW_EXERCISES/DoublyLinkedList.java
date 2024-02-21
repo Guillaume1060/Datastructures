@@ -125,4 +125,34 @@ public class DoublyLinkedList {
         head = tail;
         tail = temp;
     }
+
+    // EXO 30 - IS PALINDROME - Bad way
+/*    public boolean isPalindrome() {
+        StringBuilder vice = new StringBuilder();
+        StringBuilder versa = new StringBuilder();
+        Node temp = head;
+        Node temp2 = tail;
+        for (int i=0;i<length;i++) {
+            vice.append(temp.value);
+            temp = temp.next;
+        }
+        for (int i=length;i>0;i--) {
+            versa.append(temp2.value);
+            temp2 = temp2.prev;
+        }
+        return vice.toString().equals(versa.toString());
+    }*/
+
+    // Better way
+    public boolean isPalindrome() {
+        if(length<=1) return true;
+        Node forwarderNode = head;
+        Node backwarderNode = tail;
+        for (int i=0;i<length/2;i++) {
+            if (forwarderNode.value != backwarderNode.value) return false;
+            forwarderNode = forwarderNode.next;
+            backwarderNode = backwarderNode.prev;
+        }
+        return true;
+    }
 }

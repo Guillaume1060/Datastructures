@@ -73,10 +73,11 @@ public class Main {
 
 
         DoublyLinkedList test = new DoublyLinkedList(1);
-        test.append(9);
-        test.append(8);
-        test.append(0);
-        test.swapFirstLast();
+        test.append(2);
+        test.append(3);
+        test.append(2);
+        test.append(1);
+        System.out.println(test.isPalindrome());
         test.printList();
 
     }
