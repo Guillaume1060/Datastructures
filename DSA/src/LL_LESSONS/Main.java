@@ -19,12 +19,15 @@ public class Main {
         System.out.println(myLinkedList.removeLast());*/
 
         DoublyLinkedList myDLL = new DoublyLinkedList(7);
+        myDLL.append(18);
+//        myDLL.getHead();
+//        myDLL.getTail();
+//        myDLL.getLength();
 
-        myDLL.getHead();
-        myDLL.getTail();
-        myDLL.getLength();
+        System.out.println(myDLL.removeLast().value);
+        System.out.println(myDLL.removeLast().value);
+        System.out.println(myDLL.removeLast());
 
-        myDLL.printList();
 
     }
 }
