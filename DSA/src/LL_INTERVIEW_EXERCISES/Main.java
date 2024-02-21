@@ -72,33 +72,13 @@ public class Main {
 //        ll.printList(); // Output: 3 2 1 5 8 10
 
 
-        LinkedList test =new LinkedList(1);
+        DoublyLinkedList test = new DoublyLinkedList(1);
+        test.append(9);
+        test.append(8);
         test.append(0);
-        test.append(1);
-        test.append(0);
+        test.swapFirstLast();
         test.printList();
-        System.out.println(test.binaryToDecimal());
-
 
     }
-
-
 }
-        /*
-            EXPECTED OUTPUT:
-            ----------------
-            LL before partition_list:
-            3
-            5
-            8
-            10
-            2
-            1
-            LL after partition_list:
-            3
-            2
-            1
-            5
-            8
-            10
-         */
+
