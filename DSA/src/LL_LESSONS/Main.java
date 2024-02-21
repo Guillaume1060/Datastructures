@@ -23,15 +23,19 @@ public class Main {
         myDLL.append(2);
         myDLL.append(3);
 
-        System.out.println(myDLL.get(1).value);
-        System.out.println(myDLL.get(2).value);
+        myDLL.insert(1,18);
+
+        myDLL.printList();
+
+//        System.out.println(myDLL.get(1).value);
+//        System.out.println(myDLL.get(2).value);
 //        myDLL.getHead();
 //        myDLL.getTail();
 //        myDLL.getLength();
 
-        System.out.println(myDLL.removeLast().value);
-        System.out.println(myDLL.removeLast().value);
-        System.out.println(myDLL.removeLast());
+//        System.out.println(myDLL.removeLast().value);
+//        System.out.println(myDLL.removeLast().value);
+//        System.out.println(myDLL.removeLast());
 
 
     }

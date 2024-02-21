@@ -100,7 +100,7 @@ public class DoublyLinkedList {
     public Node get(int index) {
         if (index < 0 || index >= length) return null;
         Node temp = head;
-        if (index < length/2) {
+        if (index < length / 2) {
             for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
@@ -117,6 +117,32 @@ public class DoublyLinkedList {
         Node temp = get(index);
         if (temp == null) return false;
         temp.value = value;
+        return true;
+    }
+
+    public boolean insert(int index, int value) {
+        if (index < 0 || index > length) return false;
+        if (index == 0) {
+            prepend(value);
+        } else if (index == length) {
+            append(value);
+        } else {
+            Node newNode = new Node(value);
+            Node temp = get(index);
+            // OR
+            newNode.prev = temp.prev;
+            newNode.next = temp;
+            temp.prev.next = newNode;
+            temp.prev = newNode;
+            // OR
+/*          Node before = get(index-1);
+            Node after = before.next;
+            newNode.prev = before;
+            newNode.next = after;
+            before.next = newNode;
+            after.prev = newNode;*/
+            length++;
+        }
         return true;
     }
 
