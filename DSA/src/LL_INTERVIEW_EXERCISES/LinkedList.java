@@ -229,6 +229,52 @@ public class LinkedList {
 
         // EXO 18 Reverse Between
         public void reverseBetween(int m, int n) {
+            if (head == null) return;
+            Node dummyNode = new Node(0);
+            dummyNode.next = head;
+            Node previousNode = dummyNode;
+            for (int i=0;i<m;i++){
+                previousNode = previousNode.next;
+            }
+            Node currentNode = previousNode.next;
+            for(int i=0;i<n-m;i++) {
+                Node temp = currentNode.next;
+                currentNode.next = temp.next;
+                temp.next = previousNode.next;
+                previousNode.next = temp;
+
+            }
+            head=dummyNode.next;
+
+
+
+
+
+
+
+/*            Node temp = head;
+            Node reverse = null;
+
+            for (int i=0;i<length;i++) {
+                if (i==m-1) {
+                    temp.next = reverse;
+                } else if (i>=m && i<=n) {
+                    if (i==m){
+                        reverse = temp;
+                        reverse.next = null;
+                    } else {
+
+                    }
+                } else if (i>n){
+
+                }
+                temp = temp.next;
+            }
+            // Ici on raccorde ?*/
+        }
+
+
+/*        public void reverseBetween(int m, int n) {
             // Your implementation here
             // Do I have to initialize tail at m and head at n for the reversePartition ?
             Node temp = head;
@@ -259,10 +305,10 @@ public class LinkedList {
                 }
                 index++;
                 temp = nextNode;
-            }
+            }*/
             // ReOrganise the list
             // Dois-je ajuster head & tail à index m-1 ?
             // --> temp. next deviendra le tail du reverse
         }
-}
+
 
