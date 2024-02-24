@@ -155,4 +155,37 @@ public class DoublyLinkedList {
         }
         return true;
     }
+
+    // EXO 31 - SWAP NODES IN PAIRS
+    public void swapPairs() {
+        if (length<=1) return;
+        Node pair_1 = head;
+        Node pair_2 = head.next;
+        Node pairToCheck = head;
+
+        // Garder une référence à la tête de la liste
+        Node newHead = pair_2;
+
+        while (pairToCheck != null && pair_2 != null && pair_2.next != null) { //voir si pair_1 ou pair_2 ou && ??
+            pairToCheck = pair_2.next.next;
+            Node tempNextPair_2 = pair_2.next.next;
+            Node tempPrev = pair_1.prev;
+            Node tempNext = pair_2.next;
+            // Croisement PairA/PairB
+            pair_1.prev = tempNext;
+            pair_1.next = tempNextPair_2;
+            pair_2.prev = tempPrev;
+            pair_2.next = pair_1;
+            // Mettez à jour les références des nœuds voisins
+            if (tempNextPair_2 != null)
+                tempNextPair_2.prev = pair_1;
+            if (tempPrev != null)
+                tempPrev.next = pair_2;
+            // Déplacez-vous à la prochaine paire
+            pair_1 = tempNext;
+            if (pair_1 != null)
+                pair_2 = pair_1.next;
+        }
+        head = newHead;
+    }
 }
