@@ -55,4 +55,19 @@ public class Stack {
         height--;
         return temp;
     }
+
+    // EXO 38
+/*    public void push(T item) {
+        stackList.add(item); // It brings it at the queue as expected
+        }
+
+    // EXO 39
+        public T pop(){
+        if (isEmpty()) return null;
+        return stackList.remove(size()-1);
+    }
+
+
+
+*/
 }
