@@ -1,4 +1,4 @@
-package LL_LESSONS;
+package linkedList.LL_LESSONS;
 
 public class LinkedList {
 

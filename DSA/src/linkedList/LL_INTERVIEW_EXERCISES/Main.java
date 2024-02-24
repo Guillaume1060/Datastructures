@@ -1,4 +1,4 @@
-package LL_INTERVIEW_EXERCISES;
+package linkedList.LL_INTERVIEW_EXERCISES;
 
 public class Main {
     public static void main(String[] args) {
