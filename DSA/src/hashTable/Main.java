@@ -61,6 +61,37 @@ public class Main {
     }
 
     // EXO 55
+    public static List<List<String>> groupAnagrams(String[] strings) {
+        // Create a map to store anagram groups
+        Map<String, List<String>> anagramGroups = new HashMap<>();
+
+        // Iterate over each string in the input array
+        for (String string : strings) {
+            // Convert the string to a char array
+            char[] chars = string.toCharArray();
+            // Sort the char array
+            Arrays.sort(chars);
+            // Create a canonical string from sorted chars
+            String canonical = new String(chars);
+
+            // Check if the map contains the canonical key
+            if (anagramGroups.containsKey(canonical)) {
+                // Add the string to the existing group
+                anagramGroups.get(canonical).add(string);
+            } else {
+                // Create a new group for the string
+                List<String> group = new ArrayList<>();
+                group.add(string);
+                // Add the new group to the map
+                anagramGroups.put(canonical, group);
+            }
+        }
+
+        // Return the groups as a new ArrayList
+        return new ArrayList<>(anagramGroups.values());
+    }
+
+    // EXO 56
     public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
             for (int i=0;i<nums.length;i++) {
@@ -88,7 +119,7 @@ public class Main {
 
     }
 
-    // EXO 56
+    // EXO 57
     public static int[] subarraySum(int[] nums, int target) {
         // Create a HashMap to store cumulative sum and index
         Map<Integer, Integer> sumIndex = new HashMap<>();
@@ -114,6 +145,65 @@ public class Main {
         // Return an empty array if no subarray is found
         return new int[]{};
     }
+
+    // EXO 58
+    public static List<Integer> removeDuplicates(List<Integer> myList) {
+        Set<Integer> mySet = new HashSet<>(myList);
+        return new ArrayList<>(mySet);
+    }
+
+    // EXO 59
+    public static boolean hasUniqueChars(String string) {
+        Set<Character> charSet = new HashSet<>();
+        for (char ch : string.toCharArray()) {
+            if (charSet.contains(ch)) {
+                return false;
+            }
+            charSet.add(ch);
+        }
+        return true;
+    }
+
+    // EXO 60
+    public static List<int[]> findPairs(int[] arr1, int[] arr2, int target) {
+        Set<Integer> mySet = new HashSet<>();
+        List<int[]> pairs = new ArrayList<>();
+
+        for (int num : arr1) {
+            mySet.add(num);
+        }
+        for (int num : arr2) {
+            int complement = target - num;
+            if (mySet.contains(complement)) {
+                pairs.add(new int[]{complement,num});
+            }
+        }
+        return pairs;
+    }
+
+    // EXO 61
+    public static int longestConsecutiveSequence(int[] nums){
+        Set <Integer> mySet = new HashSet<>();
+        int longestStreak = 0;
+
+        for (int num : nums) {
+            mySet.add(num);
+        }
+
+        for (int num : mySet) {
+            if (!mySet.contains(num-1)) {
+                int currentNumber = num;
+                int currentStreak = 1;
+                while (mySet.contains(currentNumber+1)) {
+                    currentStreak++;
+                    currentNumber++;
+                }
+                longestStreak = Math.max(longestStreak,currentStreak);
+            }
+        }
+        return longestStreak;
+    }
+
 
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 3, 4, 5};
