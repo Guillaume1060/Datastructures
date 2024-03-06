@@ -137,5 +137,17 @@ public class BinarySearchTree {
         deleteNode(root, value);
     }
 
+    // EXO INVERSION TREE
+    private Node invertTree(Node node) {
+        if (node == null) return null;
+        Node temp = node.left;
+        node.left = invertTree(node.right);
+        node.right = invertTree(temp);
 
+        return node;
+    }
+
+    public void invert() {
+        root = invertTree(root);
+    }
 }
