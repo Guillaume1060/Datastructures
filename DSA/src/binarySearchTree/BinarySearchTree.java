@@ -126,7 +126,7 @@ public class BinarySearchTree {
             } else { //4
                 int subTreeMin = minValue(currentNode.right); // We get the min value of the subTree on the right (which is the next larger value in the BST)
                 currentNode.value = subTreeMin;               // we set the min value to the currentNode
-                currentNode.right = deleteNode(currentNode.right,subTreeMin); // Here we delete the identical value
+                currentNode.right = deleteNode(currentNode.right, subTreeMin); // Here we delete the identical value
             }
         }
         return currentNode;
@@ -143,11 +143,12 @@ public class BinarySearchTree {
         Node temp = node.left;
         node.left = invertTree(node.right);
         node.right = invertTree(temp);
-
         return node;
     }
 
     public void invert() {
         root = invertTree(root);
     }
+
+
 }
