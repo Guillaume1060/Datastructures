@@ -76,7 +76,7 @@ public class BinarySearchTreeTraversal {
     // 2.a.Depth First Search - PRE-ORDER
     public ArrayList<Integer> DFSPreOrder() {
         ArrayList<Integer> results = new ArrayList<>();
-        // Inner class to cretate method inside a method
+        // Inner class to create method inside a method
         class Traverse {
             Traverse(Node currentNode) {
                 results.add(currentNode.value);
@@ -98,7 +98,6 @@ public class BinarySearchTreeTraversal {
         DFSPreOrderHelper(root, results);
         return results;
     }
-
     private void DFSPreOrderHelper(Node currentNode, ArrayList<Integer> results) {
         if (currentNode == null) return;
 
