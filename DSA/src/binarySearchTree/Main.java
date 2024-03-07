@@ -2,25 +2,18 @@ package binarySearchTree;
 
 public class Main {
     public static void main(String[] args) {
-        BinarySearchTreeTraversal myBST = new BinarySearchTreeTraversal();
+        BinarySearchTreeTraversal bst = new BinarySearchTreeTraversal();
 
-        myBST.insert(47);
-        myBST.insert(21);
-        myBST.insert(76);
-        myBST.insert(18);
-        myBST.insert(27);
-        myBST.insert(52);
-        myBST.insert(82);
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(2);
+        bst.insert(4);
+        bst.insert(6);
+        bst.insert(8);
 
-        System.out.println("DFS PreOrder:");
-        System.out.println( myBST.DFSPreOrder() );
-
-        /*
-            EXPECTED OUTPUT:
-            ----------------
-            DFS PreOrder:
-            [47, 21, 18, 27, 76, 52, 82]
-
-        */
+        System.out.println(bst.kthSmallest(1));  // Expected output: 2
+        System.out.println(bst.kthSmallest(3));  // Expected output: 4
+        System.out.println(bst.kthSmallest(6));  // Expected output: 7
     }
 }

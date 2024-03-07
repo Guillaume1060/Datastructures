@@ -1,8 +1,6 @@
 package binarySearchTree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 
 public class BinarySearchTreeTraversal {
@@ -60,17 +58,17 @@ public class BinarySearchTreeTraversal {
     }
 
     // 1.Breadth-first search traversal
-    public ArrayList<Integer> BSF () {
+    public ArrayList<Integer> BSF() {
         Node currentNode = root;
         Queue<Node> queue = new LinkedList<>();
         ArrayList<Integer> result = new ArrayList<>();
         queue.add(currentNode);
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             currentNode = queue.remove();
             result.add(currentNode.value);
-            if (currentNode.left !=null) queue.add(currentNode.left);
-            if (currentNode.right !=null) queue.add(currentNode.right);
+            if (currentNode.left != null) queue.add(currentNode.left);
+            if (currentNode.right != null) queue.add(currentNode.right);
         }
         return result;
     }
@@ -85,7 +83,7 @@ public class BinarySearchTreeTraversal {
                 if (currentNode.left != null) {
                     new Traverse(currentNode.left);
                 }
-                if (currentNode.right != null){
+                if (currentNode.right != null) {
                     new Traverse(currentNode.right);
                 }
             }
@@ -93,12 +91,14 @@ public class BinarySearchTreeTraversal {
         new Traverse(root);
         return results;
     }
+
     //An alternative way of solving this with a recursive helper method:
     public ArrayList<Integer> DFSPreOrderBis() {
         ArrayList<Integer> results = new ArrayList<>();
         DFSPreOrderHelper(root, results);
         return results;
     }
+
     private void DFSPreOrderHelper(Node currentNode, ArrayList<Integer> results) {
         if (currentNode == null) return;
 
@@ -122,10 +122,10 @@ public class BinarySearchTreeTraversal {
     }
 
     // 2.c.Depth First Search - IN-ORDER
-    public ArrayList<Integer> DFSInOrder(){
+    public ArrayList<Integer> DFSInOrder() {
         ArrayList<Integer> results = new ArrayList<>();
         class Traverse {
-            Traverse(Node currentNode){
+            Traverse(Node currentNode) {
                 if (currentNode.left != null) new Traverse(currentNode.left);
                 results.add(currentNode.value);
                 if (currentNode.right != null) new Traverse(currentNode.right);
@@ -139,12 +139,13 @@ public class BinarySearchTreeTraversal {
     public boolean isValidBST() {
         ArrayList<Integer> BSTInOrder = DFSInOrder();
         int temp = BSTInOrder.get(0);
-        for (int i=1;i<BSTInOrder.size();i++) {
+        for (int i = 1; i < BSTInOrder.size(); i++) {
             if (temp > BSTInOrder.get(i)) return false;
             temp = BSTInOrder.get(i);
         }
         return true;
     }
+
     // Correction ->
     public boolean isValidBSTCorrection() {
         ArrayList<Integer> nodeValues = DFSInOrder();
@@ -152,5 +153,46 @@ public class BinarySearchTreeTraversal {
             if (nodeValues.get(i) <= nodeValues.get(i - 1)) return false;
         }
         return true;
+    }
+
+    // EXO 85
+    public Integer kthSmallest(int k) {
+        Stack<Node> stack = new Stack<>();
+
+        if (root == null) return null;
+        class Traverse {
+            Traverse(Node currentNode) {
+                if (currentNode.left != null) new Traverse(currentNode.left);
+                stack.add(currentNode);
+                if (currentNode.right != null) new Traverse(currentNode.right);
+            }
+        }
+        new Traverse(root);
+        List<Node> copyStack = new ArrayList<>(stack);
+        for (Node node : copyStack) {
+            if (k == 1) return node.value;
+            stack.pop();
+            k--;
+        }
+        return null;
+    }
+    // Correction
+    public Integer kthSmallestCorrection(int k) {
+        Stack<Node> stack = new Stack<>();
+        Node node = this.root;
+
+        while (!stack.isEmpty() || node != null) {
+            while (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+            node = stack.pop();
+            k -= 1;
+            if (k == 0) {
+                return node.value;
+            }
+            node = node.right;
+        }
+        return null;
     }
 }
