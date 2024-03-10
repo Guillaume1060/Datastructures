@@ -150,5 +150,13 @@ public class BinarySearchTree {
         root = invertTree(root);
     }
 
-
+    // Exo 78
+    private Node sortedArrayToBST(int[] nums, int left, int right) {
+        if (right<left) return null;
+        int middleIndex = left + (right - left) / 2;
+        Node newNode = new Node(nums[middleIndex]);
+        newNode.left = sortedArrayToBST(nums, left, middleIndex-1);
+        newNode.right = sortedArrayToBST(nums,middleIndex+1,right);
+        return newNode;
+    }
 }
