@@ -61,7 +61,7 @@ public class Array {
 
         for (int i=1;i<nums.length;i++) {
             cumul += nums[i];
-            cumul = cumul > nums[i] ? cumul : nums[i];
+            cumul = Math.max(cumul, nums[i]);
             max = Math.max(cumul,max);
         }
         return max;
